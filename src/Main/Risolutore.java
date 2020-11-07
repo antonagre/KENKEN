@@ -1,4 +1,9 @@
+package Main;
 
+import Map.GameMap;
+import UI.Cell;
+import UI.RisolutoreGui;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
@@ -11,7 +16,7 @@ public class Risolutore {
 
 
     public Risolutore() {
-        map=Mediator.getInstance().getMap();
+        map= Mediator.getInstance().getMap();
         map.resetMap();
         sol.clear();
         solveMap();
@@ -19,7 +24,7 @@ public class Risolutore {
         new RisolutoreGui(solutionMap);
     }
 
-    public void solveBlock(Block bl) {
+    public void solveBlock(@NotNull Block bl) {
         Cell empty = bl.findEmpty();
         if (empty != null) {
             for (int i = 1; i < map.mapSide + 1; i++) {

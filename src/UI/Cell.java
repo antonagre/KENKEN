@@ -1,3 +1,8 @@
+package UI;
+
+import Main.Block;
+import Main.Mediator;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -46,7 +51,7 @@ public class Cell extends JButton {
     }
 
     public void updateValue(int val){
-        this.n=val;
+        n=val;
         med.getMap().updateMatrix(x,y,val);
         block.completedBlock(block.checkBlock());
         repaint();

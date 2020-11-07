@@ -1,3 +1,5 @@
+package Map;
+
 public class MapModel {
     public int[][] blocksMat;
     public int[][] valuesMat;

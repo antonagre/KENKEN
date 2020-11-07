@@ -1,4 +1,7 @@
-import javax.print.attribute.standard.Media;
+package UI;
+
+import Main.Mediator;
+
 import javax.swing.*;
 import java.awt.*;
 

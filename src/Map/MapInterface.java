@@ -1,9 +1,5 @@
-import java.io.*;
-
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-
-import javax.swing.*;
+package Map;
+import Main.Mediator;
 
 public interface MapInterface {
     public Mediator med = Mediator.getInstance();

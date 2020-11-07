@@ -1,3 +1,9 @@
+package UI;
+
+import Main.Mediator;
+import Main.Risolutore;
+import Map.MapAdapter;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

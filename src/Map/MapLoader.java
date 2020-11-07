@@ -1,3 +1,6 @@
+package Map;
+
+import Main.Matrix;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import javax.swing.*;
@@ -13,7 +16,7 @@ public class MapLoader {
             JSONObject data = (JSONObject) obj;
             map.blocksMat = Matrix.StringtoMatrix((String) data.get("matrix"), 5);
             map.valuesMat = Matrix.StringtoMatrix((String) data.get("values"), 5);
-            map.results=Matrix.StringToList((String) data.get("results"));
+            map.results= Matrix.StringToList((String) data.get("results"));
             map.blocksOp = Matrix.StringToList((String) data.get("operators"));
         }catch (Exception e){
             e.printStackTrace();
@@ -28,7 +31,7 @@ public class MapLoader {
         obj.put("matrix", Matrix.MatrixToString(map.blocksMat));
         obj.put("values", Matrix.MatrixToString(map.valuesMat));
         obj.put("operators", Matrix.ListToString(map.blocksOp));
-        obj.put("results",Matrix.ListToString(map.results));
+        obj.put("results", Matrix.ListToString(map.results));
         StringWriter out = new StringWriter();
         try {
             obj.writeJSONString(out);

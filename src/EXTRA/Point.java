@@ -1,3 +1,5 @@
+package EXTRA;
+
 public class Point {
         public int x,y;
 

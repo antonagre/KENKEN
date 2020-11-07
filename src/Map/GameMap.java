@@ -1,3 +1,10 @@
+package Map;
+
+import Main.Block;
+import Main.Mediator;
+import UI.Cell;
+import UI.KenKenMap;
+
 import java.util.*;
 
 public class GameMap {

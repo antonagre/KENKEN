@@ -1,5 +1,7 @@
-import java.util.*;
+package EXTRA;
 
+import java.util.*;
+import  Main.Matrix;
 public class Prova {
 
     int[][] matrix ;

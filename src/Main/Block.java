@@ -1,3 +1,7 @@
+package Main;
+
+import UI.Cell;
+
 import java.util.ArrayList;
 
 public class Block {

@@ -1,3 +1,7 @@
+package UI;
+
+import Main.Mediator;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -13,7 +17,7 @@ public class InputBoxPanel extends JFrame implements KeyListener{
     Cell c;
 
     public InputBoxPanel(Cell gameCell){
-        super("Edit Cell");
+        super("Edit UI.Cell");
         c= gameCell;
         setLocation(500,500);
         getContentPane().setLayout(new FlowLayout());

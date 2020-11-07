@@ -1,7 +1,8 @@
-import javax.print.attribute.standard.Media;
+package Main;
+
+import Map.GameMap;
+
 import javax.swing.*;
-import java.awt.*;
-import java.util.*;
 
 public class Mediator {
     private static Mediator ISTANCE;

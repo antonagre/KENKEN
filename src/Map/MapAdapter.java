@@ -1,3 +1,5 @@
+package Map;
+
 public class MapAdapter implements MapInterface{
     MapLoader loader = new MapLoader();
     @Override
