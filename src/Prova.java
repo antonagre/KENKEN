@@ -53,7 +53,7 @@ public class Prova {
 
     public static void creaMatrix(int[][] base,int nBlocchi,int dimBlocco)
     {
-        for (int i=1;i<=nBlocchi;i++)   matrix(base,i,dimBlocco,0,0);
+        for (int i=1;i<=nBlocchi;i++)   matrix(base,i,dimBlocco,2,2);
     }
 
     public static void main (String [] args)

@@ -1,4 +1,4 @@
-import org.jetbrains.annotations.NotNull;
+
 
 import java.util.ArrayList;
 
@@ -19,7 +19,7 @@ public class Risolutore {
         new RisolutoreGui(solutionMap);
     }
 
-    public void solveBlock(@NotNull Block bl) {
+    public void solveBlock(Block bl) {
         Cell empty = bl.findEmpty();
         if (empty != null) {
             for (int i = 1; i < map.mapSide + 1; i++) {
