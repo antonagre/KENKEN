@@ -3,10 +3,25 @@ package Map;
 import Main.Matrix;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+
 import javax.swing.*;
 import java.io.*;
 
-public class MapLoader {
+public class JsonMapAdapter implements MapAdapter {
+    @Override
+    public void load() {
+        String data = readFile();
+        MapModel map = load(data);
+        med.getMap().loadMap(map);
+    }
+
+    @Override
+    public void save() {
+        MapModel map = med.getMap().dumpMap();
+        String data = save(map);
+        writeFile(data);
+    }
+
 
     public MapModel load(String jsonString) {
         MapModel map = new MapModel();
