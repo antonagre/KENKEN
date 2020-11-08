@@ -19,7 +19,7 @@ public class MainMenu extends JFrame {
         this.setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         pack();
-        setSize(new Dimension(720, 70));
+        setSize(new Dimension(720, 120));
         setVisible(true);
         JButton newBt=new JButton("NEW");
         JButton loadBt=new JButton("LOAD");

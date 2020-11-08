@@ -20,7 +20,7 @@ public class KenKenMap extends JFrame {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         med.setFrame(this);
         pack();
-        setSize(new Dimension(62*x, 68*y));
+        setSize(new Dimension(124*x, 130*y));
         setVisible(true);
     }
 

@@ -19,9 +19,9 @@ public class InputBoxPanel extends JFrame implements KeyListener{
     public InputBoxPanel(Cell gameCell){
         super("Edit UI.Cell");
         c= gameCell;
-        setLocation(500,500);
+        setLocation(1000,1000);
         getContentPane().setLayout(new FlowLayout());
-        textfield1 = new JTextField("",10);
+        textfield1 = new JTextField("",20);
         label=new JLabel("INSERT VALUE");
         setBt= new JButton("SET");
         textfield1.addKeyListener(this);

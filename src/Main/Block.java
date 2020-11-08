@@ -7,28 +7,28 @@ import java.util.ArrayList;
 public class Block {
     public ArrayList<Cell> cells;
     public String operation;
-    public int resultValue;
-    private int blockId;
+    public int risultatoValore;
+    private int idBlocco;
 
     public Block(int blockId) {
-        this.blockId = blockId;
+        this.idBlocco = blockId;
         this.cells = new ArrayList<Cell>();
     }
 
     public Block(Block bl) {
-        this.blockId = bl.blockId;
+        this.idBlocco = bl.idBlocco;
         this.cells = bl.cells;
         this.operation=bl.operation;
-        this.resultValue=bl.resultValue;
+        this.risultatoValore=bl.risultatoValore;
     }
 
     public void setAll(String OP, int val) {
         operation = OP;
-        resultValue = val;
+        risultatoValore = val;
     }
 
     public int getId() {
-        return blockId;
+        return idBlocco;
     }
 
     public Cell addCell(int x, int y) {
@@ -39,14 +39,14 @@ public class Block {
         return gameCell;
     }
 
-    public void completedBlock(boolean comp) {
+    public void bloccoCompletato(boolean comp) {
         for (Cell c : cells) {
             c.completed = comp;
             c.repaint();
         }
     }
 
-    public Cell findEmpty() {
+    public Cell cellaVuota() {
         Cell result = null;
         for (Cell c : cells) {
             if (c.n == 0) {
@@ -57,14 +57,14 @@ public class Block {
         return result;
     }
 
-    public boolean checkBlock() {
+    public boolean verificaBlocco() {
         int result = 0;
         switch (operation) {
             case "+":
                 for (Cell c : cells) {
                     result = result + c.n;
-                    if (result > resultValue) return false;
-                    if (result == resultValue) {
+                    if (result > risultatoValore) return false;
+                    if (result == risultatoValore) {
                         return true;
                     }
                 }
@@ -77,8 +77,8 @@ public class Block {
                     }
                     if (result == 0) result = c.n;
                     else result = result * c.n;
-                    if (result > resultValue) return false;
-                    if (result == resultValue) {
+                    if (result > risultatoValore) return false;
+                    if (result == risultatoValore) {
                         return true;
                     }
 
@@ -93,7 +93,7 @@ public class Block {
                                 result -= c2.n;
                             }
                         }
-                        if (result == resultValue) {
+                        if (result == risultatoValore) {
                             return true;
                         }
                     }
@@ -108,7 +108,7 @@ public class Block {
                                 result /= c2.n;
                             }
                         }
-                        if (result == resultValue) {
+                        if (result == risultatoValore) {
                             return true;
                         }
                     }

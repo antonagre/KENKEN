@@ -17,15 +17,15 @@ public class RisolutoreGui extends JFrame {
         super("SOLUZIONI");
         soluzioni=s;
         Container cp = getContentPane();
-        cp.setLayout(new GridLayout(1,3));
+        cp.setLayout(new GridLayout(2,6));
         this.setResizable(false);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         pack();
-        setSize(new Dimension(400, 70));
+        setSize(new Dimension(800, 140));
         setVisible(true);
-        JButton next=new JButton("NEXT");
-        JButton previous=new JButton("PREVIOUS");
-        counterDisplay = new JTextField("",2);
+        JButton next=new JButton("ProssimaSoluzione");
+        JButton previous=new JButton("SoluzionePrecedente");
+        counterDisplay = new JTextField("",4);
         counterDisplay.setEditable(false);
         next.addActionListener(new ActionListener() {
             @Override
@@ -52,7 +52,7 @@ public class RisolutoreGui extends JFrame {
     }
 
     public void showMap() {
-        counterDisplay.setText("Soluzione n: "+new Integer(counter).toString());
+        counterDisplay.setText("Soluzione numero: "+new Integer(counter).toString());
         int[][] currentSol = soluzioni.get(counter-1);
         Mediator.getInstance().getMap().valueMatrix=currentSol;
         Mediator.getInstance().getMap().updateMap();

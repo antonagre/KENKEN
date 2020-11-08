@@ -3,7 +3,6 @@ package Main;
 import Map.GameMap;
 import UI.Cell;
 import UI.RisolutoreGui;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
@@ -24,14 +23,14 @@ public class Risolutore {
         new RisolutoreGui(solutionMap);
     }
 
-    public void solveBlock(@NotNull Block bl) {
-        Cell empty = bl.findEmpty();
+    public void solveBlock(Block bl) {
+        Cell empty = bl.cellaVuota();
         if (empty != null) {
             for (int i = 1; i < map.mapSide + 1; i++) {
                 if (empty.checkCellUpdate(i)) {
                     empty.updateValue(i);
                     solveBlock(bl);
-                    if(bl.checkBlock())
+                    if(bl.verificaBlocco())
                     {
                         soluzioni.add(map.valueMatrix);
                         solveMap();
@@ -46,10 +45,10 @@ public class Risolutore {
     }
 
     public void solveMap() {
-        Block bloc = new Block(map.findEmptyBlock());
+        Block bloc = new Block(map.trovaBloccoVuoto());
         if (bloc != null) {
             solveBlock(bloc);
-            if(bloc.checkBlock() && bloc.getId()== map.blocks.size()){
+            if(bloc.verificaBlocco() && bloc.getId()== map.blocks.size()){
                 int[][] m = Matrix.cloneMatrix(map.valueMatrix);
                 solutionMap.add(m);
             }

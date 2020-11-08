@@ -6,12 +6,12 @@ public class MapAdapter implements MapInterface{
     public void load() {
         String data = loader.readFile();
         MapModel map = loader.load(data);
-        med.getMap().loadMap(map);
+        med.getMap().caricaMappa(map);
     }
 
     @Override
     public void save() {
-        MapModel map = med.getMap().dumpMap();
+        MapModel map = med.getMap().salvaMappa();
         String data = loader.save(map);
         loader.writeFile(data);
     }

@@ -14,7 +14,7 @@ public class GameMap {
     public int[][] valueMatrix;
     public HashMap<Integer, Block> blocks = new HashMap<Integer, Block>();
 
-    public void loadMap(MapModel map) {
+    public void caricaMappa(MapModel map) {
         blocksMap = map.blocksMat;
         valueMatrix = map.valuesMat;
         new KenKenMap(5,5);
@@ -22,11 +22,11 @@ public class GameMap {
         initGmap();
     }
 
-    public MapModel dumpMap(){
+    public MapModel salvaMappa(){
         MapModel map = new MapModel();
         map.blocksMat=this.blocksMap;
         map.valuesMat=this.valueMatrix;
-        map.blocksOp=this.getOperators();
+        map.blocksOp=this.getOperatore();
         map.results=this.getResult();
         return map;
     }
@@ -116,7 +116,7 @@ public class GameMap {
     }
 
 
-    public Block findEmptyBlock(){
+    public Block trovaBloccoVuoto(){
         Block bl= null;
         for(int i=1;i<=blocks.size();i++){
             bl = new Block(blocks.get(i));
@@ -131,7 +131,7 @@ public class GameMap {
         return bl;
     }
 
-    public String[] getOperators() {
+    public String[] getOperatore() {
         String[] op = new String[blocks.size()];
         for (int i = 1; i < blocks.size() + 1; i++) {
             op[i - 1] = blocks.get(i).operation;
@@ -142,7 +142,7 @@ public class GameMap {
     public String[] getResult() {
         String[] res = new String[blocks.size()];
         for (int i = 1; i < blocks.size() + 1; i++) {
-            res[i - 1] = new Integer(blocks.get(i).resultValue).toString();
+            res[i - 1] = new Integer(blocks.get(i).risultatoValore).toString();
         }
         return res;
     }
