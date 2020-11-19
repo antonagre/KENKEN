@@ -12,12 +12,12 @@ public class JsonMapAdapter implements MapAdapter {
     public void load() {
         String data = readFile();
         MapModel map = load(data);
-        med.getMap().loadMap(map);
+        med.getMap().caricaMappa(map);
     }
 
     @Override
     public void save() {
-        MapModel map = med.getMap().dumpMap();
+        MapModel map = med.getMap().salvaMappa();
         String data = save(map);
         writeFile(data);
     }

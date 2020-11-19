@@ -4,6 +4,7 @@ import java.util.*;
 import  Main.Matrix;
 public class Prova {
 
+
     int[][] matrix ;
 
 
@@ -115,89 +116,6 @@ public class Prova {
     }
 
 
-
-
-
-
-
-    public static void creaBlocchi(int[][] mat,int nb,boolean flag ,int x,int y) {
-        if (mat == null) return;
-        else {
-            Random r = new Random();
-            int direction = r.nextInt(4) + 1; //1 destra 2 sinistra 3 sopra 4 sotto
-            if (mat[x][y] == 0) {
-                mat[x][y] = nb;                   //INSERIMENTO DEL NUMERO DEL BLOCCO (BLOCCO ID)
-                System.out.println(Matrix.MatrixToString(mat));
-                flag=true;
-            }
-            if (direction == 1)                    //DESTRA
-            {
-                if (y < mat.length - 1 ) {
-                    if(flag){
-                        creaBlocchi(mat, nb, flag, x, y + 1);
-                    }
-                    flag=false;
-                }
-                else creaBlocchi(mat, nb+1, flag, x, y);;
-
-            }
-            if (direction == 2)                   //SINISTRA
-            {
-                if (y > 0) {
-                    if (flag) {
-                        creaBlocchi(mat, nb, flag, x, y - 1);
-                    }
-                    flag = false;
-                }
-                else creaBlocchi(mat, nb+1, flag, x, y);;
-
-            }
-            if (direction == 3 )                  //SOPRA
-            {
-                if (x > 0 ) {
-                    if (flag) {
-                        creaBlocchi(mat, nb, flag, x - 1, y);
-                    }
-                    flag = false;
-                }
-                else creaBlocchi(mat, nb+1, flag, x, y);;
-            }
-            if (direction == 4 )                   //SOTTO
-            {
-                if (x < mat.length - 1) {
-                    if(flag){
-                        creaBlocchi(mat, nb, flag, x + 1, y);
-                    }
-                    flag=false;
-
-                }
-                else creaBlocchi(mat, nb+1, flag, x, y);;
-            }
-
-        }
-    }
-
-    public static void creaBlocchiR(int[][] mat,int nb,boolean flag ,int x,int y) {
-       if(mat==null)return;
-
-    }
-
-    public static void generaBlocchi(int[][] mat,ArrayList<Integer> blocco,ArrayList<ArrayList<Integer>> arrayblocchi,int n)
-    {
-        if(n>5)return;
-
-            for(int j=0;j<mat.length;j++) {
-                for(int h=0;h<mat.length;h++){
-                   if(mat[j][h]==n){
-
-                        blocco.add(n);
-                    }
-                }
-            }
-            arrayblocchi.add(blocco);
-            generaBlocchi(mat,new ArrayList<Integer>(),arrayblocchi,n+1);
-
-        }
 
         public static boolean isFull(int[][]mat)
         {

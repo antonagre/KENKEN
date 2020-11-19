@@ -3,7 +3,7 @@ import java.util.Random;
 import Main.Matrix;
 
 public class Generatore2 {
-    Random rand=new Random();
+    Random r=new Random();
     int side;
     public enum Direction {BOTTOM,RIGHT};
     int[][] valueMatrix;
@@ -21,7 +21,7 @@ public class Generatore2 {
     }
 
     public void genBlocks(int x,int y,int id, int nCells){
-        int randDirection= rand.nextInt(4);
+        int randDirection= r.nextInt(4);
         switch (randDirection){
         case 0://GO RIGHT
             if(y+1<side && map[x][y+1]==0){
