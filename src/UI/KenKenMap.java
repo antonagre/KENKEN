@@ -12,11 +12,24 @@ public class KenKenMap extends JFrame {
         super("KENKEN-MAP");
         Container cp = getContentPane();
         cp.setLayout(new GridLayout(side,side));
-        this.setResizable(false);
+        this.setResizable(true);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         med.setFrame(this);
         pack();
-        setSize(new Dimension(62*side, 68*side));
+        switch (side){
+            case 3:
+                setSize(new Dimension(62*side, 68*side+10));
+                break;
+            case 4:
+                setSize(new Dimension(62*side, 68*side+5));
+                break;
+            case 5:
+                setSize(new Dimension(62*side, 68*side-5));
+                break;
+            case 6:
+                setSize(new Dimension(62*side, 68*side-10));
+                break;
+        }
         setVisible(true);
     }
 

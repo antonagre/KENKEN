@@ -12,6 +12,17 @@ public class Util {
         }
         return matrix;
     }
+
+    public static int countBlockCells(int[][] m, int id){
+        int count=0;
+        int n = m.length;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                if(m[i][j]==id) count++;
+            }
+        }
+        return count;
+    }
     public static String MatrixToString(int[][] matrix){
         StringBuilder sbResult = new StringBuilder();
         int size=matrix[0].length;

@@ -59,13 +59,12 @@ public class BlocksBuilder {
             String op = generateOP();
             float res = calcOpResult(id,op);
             if(res>0 && res%1==0){
-                System.out.println("id: "+id+" op: "+op+" res:"+res);
-                operations[id-1]=op;
-                results[id-1]=new Integer(Math.round(res)).toString();
+                System.out.println("id: " + id + " op: " + op + " res:" + res);
+                operations[id - 1] = op;
+                results[id - 1] = new Integer(Math.round(res)).toString();
                 break;
             }
         }
-
     }
 
     public float calcOpResult(int id,String op){

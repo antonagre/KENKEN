@@ -33,7 +33,7 @@ public class GameMap extends MapModel {
 
 
     public void updateMap(){
-        for (int i=1;i<blocks.size()+1;i++) {
+        for (int i=1;i<blocks.size();i++) {
             for (Cell c:blocks.get(i).cells) {
                 c.updateValue(valueMatrix[c.x][c.y]);
             }

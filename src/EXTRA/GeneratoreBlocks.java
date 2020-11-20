@@ -5,12 +5,17 @@ import Core.Util;
 public class GeneratoreBlocks {
     Random rand=new Random();
     int side;
+    int min,max;
+    int avaiableCells=0;
     int blocksCount=0;
     int[][] mapBlocks;
 
 
     public GeneratoreBlocks(int side){
+        min=2;
+        max=side+1;
         this.side=side;
+        this.avaiableCells = side * side;
         this .mapBlocks = new int[side][side];
         this.generateBlocks(this.side);
     }
@@ -19,17 +24,22 @@ public class GeneratoreBlocks {
         side=dim;
         int blocksCount=0;
         mapBlocks=new int[side][side];
-        genBlocks(0,0,1, rand.nextInt(3)+3);
+        genBlocks(0,0,1, rand.nextInt(max-min+1)+min);
         return mapBlocks;
     }
 
     private void genBlocks(int x,int y,int id, int nCells){
         this.blocksCount=id;
+        avaiableCells--;
         nCells--;
         mapBlocks[x][y]=id;
         if(nCells==0) {
             id++;
-            nCells= rand.nextInt(3)+2;
+            nCells = rand.nextInt(max-min+1)+min;
+            if(avaiableCells-nCells==1) {
+                if(nCells+1>max) nCells= rand.nextInt(max-min+1)+min;
+                else nCells++;
+            }
         }
         if(x<side-1 &&mapBlocks[x+1][y]==0){
             genBlocks(x+1,y,id,nCells);
