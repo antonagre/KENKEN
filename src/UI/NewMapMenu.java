@@ -36,7 +36,7 @@ public class NewMapMenu extends JFrame {
         JButton map3=getButton(3,this);
         JButton map4=getButton(4,this);
         JButton map5=getButton(5,this);
-        JButton map6=getButton(6,this);
+        JButton map6=getButton(8,this);
         cp.add(map3);
         cp.add(map4);
         cp.add(map5);

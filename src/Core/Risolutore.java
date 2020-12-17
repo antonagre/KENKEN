@@ -26,16 +26,15 @@ public class Risolutore {
         Cell empty = bl.findEmpty();
         if (empty != null) {
             for (int i = 1; i < map.mapSide + 1; i++) {
-                if (empty.checkCellUpdate(i)) {
-                    empty.updateValue(i);
+                if (empty.model.checkCellUpdate(i)) {
+                    empty.model.updateValue(i);
                     solveBlock(bl);
-                    if(bl.checkBlock())
-                    {
+                    if(bl.checkBlock()){
                         soluzioni.add(map.valueMatrix);
                         solveMap();
                         soluzioni.clear();
                     }
-                    empty.reset();
+                    empty.model.reset();
                 }
             }
 

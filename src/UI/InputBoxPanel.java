@@ -14,36 +14,36 @@ public class InputBoxPanel extends JFrame implements KeyListener{
     private Mediator med = Mediator.getInstance();
     JLabel label;
     JButton setBt;
-    JTextField textfield1;
-    Cell c;
+    JTextField textfield;
+    CellButton cellBt;
 
     public InputBoxPanel(Cell gameCell){
         super("Edit Core.Cell");
-        c= gameCell;
+        cellBt = gameCell.getButton();
         setLocation(500,500);
         getContentPane().setLayout(new FlowLayout());
-        textfield1 = new JTextField("",10);
+        textfield = new JTextField("",10);
         label=new JLabel("INSERT VALUE");
         setBt= new JButton("SET");
-        textfield1.addKeyListener(this);
+        textfield.addKeyListener(this);
 
 
         setBt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                int val = new Integer(textfield1.getText());
-                if (!c.checkCellUpdate(val)) {
+                int val = new Integer(textfield.getText());
+                if (!cellBt.model.checkCellUpdate(val)) {
                     label.setText("INVALID VALUE");
                 } else {
                     dispose();
-                    c.updateValue(val);
+                    cellBt.model.updateValue(val);
                     med.getFrame().getContentPane().revalidate();
                     med.getFrame().repaint();
                     }
                 }
             });
         getContentPane().add(label);
-        getContentPane().add(textfield1);
+        getContentPane().add(textfield);
         getContentPane().add(setBt);
         pack();
         setVisible(true);
@@ -56,12 +56,12 @@ public class InputBoxPanel extends JFrame implements KeyListener{
 
     public void keyPressed(KeyEvent keyEvent) {
         if (keyEvent.getKeyCode() == KeyEvent.VK_ENTER) {
-            int val = new Integer(textfield1.getText());
-            if (!c.checkCellUpdate(val)) {
+            int val = new Integer(textfield.getText());
+            if (!cellBt.model.checkCellUpdate(val)) {
                 label.setText("INVALID VALUE");
             } else {
                 dispose();
-                c.updateValue(val);
+                cellBt.model.updateValue(val);
                 med.getFrame().getContentPane().revalidate();
                 med.getFrame().repaint();
             }

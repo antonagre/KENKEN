@@ -37,16 +37,10 @@ public class Block {
         return gameCell;
     }
 
-    public void completedBlock(boolean comp) {
-        for (Cell c : cells) {
-            c.isCompleted(comp);
-        }
-    }
-
     public Cell findEmpty() {
         Cell result = null;
         for (Cell c : cells) {
-            if (c.n == 0) {
+            if (c.model.n == 0) {
                 result = c;
                 break;
             }
@@ -59,7 +53,7 @@ public class Block {
         switch (operation) {
             case "+":
                 for (Cell c : cells) {
-                    result = result + c.n;
+                    result = result + c.model.n;
                     if (result > resultValue) return false;
                     if (result == resultValue) {
                         return true;
@@ -68,12 +62,12 @@ public class Block {
                 break;
             case "*":
                 for (Cell c : cells) {
-                    if (c.n == 0) {
+                    if (c.model.n == 0) {
                         result = 0;
                         return false;
                     }
-                    if (result == 0) result = c.n;
-                    else result = result * c.n;
+                    if (result == 0) result = c.model.n;
+                    else result = result * c.model.n;
                     if (result > resultValue) return false;
                     if (result == resultValue) {
                         return true;
@@ -83,11 +77,11 @@ public class Block {
                 break;
             case "-":
                 for (Cell c : cells) {
-                    if (c.n != 0) {
-                        result = c.n;
+                    if (c.model.n != 0) {
+                        result = c.model.n;
                         for (Cell c2 : cells) {
                             if (c != c2) {
-                                result -= c2.n;
+                                result -= c2.model.n;
                             }
                         }
                         if (result == resultValue && result>0) {
@@ -98,11 +92,11 @@ public class Block {
                 break;
             case "/":
                 for (Cell c : cells) {
-                    if (c.n != 0) {
-                        result = c.n;
+                    if (c.model.n != 0) {
+                        result = c.model.n;
                         for (Cell c2 : cells) {
-                            if (c.n != c2.n) {
-                                result /= c2.n;
+                            if (c.model.n != c2.model.n) {
+                                result /= c2.model.n;
                             }
                         }
                         if (result == resultValue) {

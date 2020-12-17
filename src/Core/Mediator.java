@@ -6,13 +6,14 @@ import Map.JsonMapAdapter;
 import Map.MapAdapter;
 import Map.MapModel;
 import UI.NewMapMenu;
+import UI.UiManager;
 
 import javax.swing.*;
 
 public class Mediator {
     private static Mediator ISTANCE;
     private MapAdapter loader = new JsonMapAdapter();
-    private JFrame frame;
+    private UiManager uiMgr = new UiManager();
     private GameMap map;
 
     private Mediator() {
@@ -58,15 +59,21 @@ public class Mediator {
     }
 
     public void setFrame(JFrame f) {
-        frame = f;
+        uiMgr.setFrame(f);
     }
 
     public JFrame getFrame() {
-        return frame;
+        return uiMgr.getFrame();
     }
+
+    public void voidUpdateUIMap() { }
 
     public GameMap getMap(){
         return this.map;
     }
 
+    public void updateGuiFrame(){
+        this.getFrame().revalidate();
+        this.getFrame().repaint();
+    }
 }

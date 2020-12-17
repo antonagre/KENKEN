@@ -43,7 +43,7 @@ public class BlocksBuilder {
         }
         MapModel model = new MapModel();
         model.blocksMat=this.mapBlocks;
-        model.valuesMat=mat;
+        model.valuesMat=Util.createZeroMatrix(this.side);
         model.blocksOp=operations;
         model.results=results;
         return model;
@@ -61,7 +61,7 @@ public class BlocksBuilder {
             if(res>0 && res%1==0){
                 System.out.println("id: " + id + " op: " + op + " res:" + res);
                 operations[id - 1] = op;
-                results[id - 1] = new Integer(Math.round(res)).toString();
+                results[id - 1] = Integer.toString(Math.round(res));
                 break;
             }
         }

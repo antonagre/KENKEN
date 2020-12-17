@@ -33,13 +33,12 @@ public class GameMap extends MapModel {
 
 
     public void updateMap(){
-        for (int i=1;i<blocks.size();i++) {
+        for (int i=1;i<blocks.size()+1;i++) {
             for (Cell c:blocks.get(i).cells) {
-                c.updateValue(valueMatrix[c.x][c.y]);
+                c.model.updateValue(valueMatrix[c.model.x][c.model.y]);
             }
         }
-        Mediator.getInstance().getFrame().revalidate();
-        Mediator.getInstance().getFrame().repaint();
+
     }
 
 
@@ -80,8 +79,8 @@ public class GameMap extends MapModel {
     public void resetMap() {
         for (int i = 1; i < blocks.size() + 1; i++) {
             for (Cell c : blocks.get(i).cells) {
-                c.reset();
-                c.updateValue(c.n);
+                c.model.reset();
+                c.model.updateValue(c.model.n);
             }
         }
     }
@@ -96,9 +95,9 @@ public class GameMap extends MapModel {
     }
 
     public boolean checkRight(Cell c) {
-        if (c.y < mapSide - 1) {
-            int id = blocksMap[c.x][c.y];
-            if (blocksMap[c.x][c.y + 1] == blocksMap[c.x][c.y]) {
+        if (c.model.y < mapSide - 1) {
+            int id = blocksMap[c.model.x][c.model.y];
+            if (blocksMap[c.model.x][c.model.y + 1] == blocksMap[c.model.x][c.model.y]) {
                 return true;
             }
         }
@@ -106,9 +105,9 @@ public class GameMap extends MapModel {
     }
 
     public boolean checkBottom(Cell c) {
-        if (c.x < mapSide - 1) {
-            int id = blocksMap[c.x][c.y];
-            if (blocksMap[c.x + 1][c.y] == blocksMap[c.x][c.y]) {
+        if (c.model.x < mapSide - 1) {
+            int id = blocksMap[c.model.x][c.model.y];
+            if (blocksMap[c.model.x + 1][c.model.y] == blocksMap[c.model.x][c.model.y]) {
                 return true;
             }
         }
@@ -122,7 +121,7 @@ public class GameMap extends MapModel {
             bl = new Block(blocks.get(i));
             boolean flag = true;
             for(Cell c: bl.cells){
-                if(c.n==0){
+                if(c.model.n==0){
                     flag=false;;
                 }
             }

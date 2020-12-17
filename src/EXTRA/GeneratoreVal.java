@@ -16,7 +16,7 @@ public class GeneratoreVal {
     public void generateValues(int side) {
         this.side=side;
         mat=new int[side][side];
-        genValues(mat);
+        genValues(mat,new Point(0,0));
         if(Util.matrixContains(mat,0)){
             regenerate();
             return;
@@ -29,27 +29,30 @@ public class GeneratoreVal {
         this.generateValues(this.side);
     }
 
-    public boolean checkMatrix(int[] cell, int x) {
+    public boolean checkMatrix(Point cell, int x) {
         for (int i = 0; i < side; i++) {
-            if (mat[cell[0]][i] == x) {
+            if (mat[cell.x][i] == x) {
                 return false;//NOT VALID UPDATE COL
-            } else if (mat[i][cell[1]] == x) {
+            } else if (mat[i][cell.y] == x) {
                 return false;//NOT VALID UPDATE ROW
             }
         }
         return true;
     }
 
-    private int[] findEmpty(){
+    private Point findEmpty(Point last){
         int count = 0;
         while (count<side*side){
             int x = rand.nextInt(side);
             int y = rand.nextInt(side);
             if(mat[x][y]==0){
-                int[] res=new int[2];
-                res[0]=x;
-                res[1]=y;
-                return res;
+                Point p = new Point(x,y);
+                if(p!=last){
+                    return p;
+                }
+                else {
+                    this.findEmpty(last);
+                }
             }
             else{
                 count++;
@@ -58,25 +61,26 @@ public class GeneratoreVal {
         return null;
     }
 
-    private void genValues(int[][] m) {
+
+    private void genValues(int[][] m,Point last) {
         int[][] old=Util.cloneMatrix(m);
-        int[] empty = findEmpty();
+        Point empty = findEmpty(last);
         if(empty==null) return;
         if (empty != null) {
             for (int i = 1; i < side + 1; i++) {
                 if (checkMatrix(empty,i)) {
-                    mat[empty[0]][empty[1]]=i;
-                    genValues(mat);
+                    mat[empty.x][empty.y]=i;
+                    genValues(mat,empty);
                 }
             }
-            genValues(old);
+            genValues(old,empty);
 
         }
         return;
     }
 
     public static  void main(String args[]){
-        GeneratoreVal g=new GeneratoreVal(6);
+        GeneratoreVal g=new GeneratoreVal(9);
         System.out.println(Util.MatrixToString(g.mat));
     }
 }
