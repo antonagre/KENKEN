@@ -10,7 +10,7 @@ public class Cell {
     public CellButton bt;
 
     public Cell(int x, int y, Block block) {
-        this.model = new CellModel(x,y,block);
+        this.model = new CellModel(x,y,block,this);
         this.bt = new CellButton(this);
     }
 

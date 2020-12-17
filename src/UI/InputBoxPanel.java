@@ -15,11 +15,11 @@ public class InputBoxPanel extends JFrame implements KeyListener{
     JLabel label;
     JButton setBt;
     JTextField textfield;
-    CellButton cellBt;
+    Cell cell;
 
     public InputBoxPanel(Cell gameCell){
         super("Edit Core.Cell");
-        cellBt = gameCell.getButton();
+        cell = gameCell;
         setLocation(500,500);
         getContentPane().setLayout(new FlowLayout());
         textfield = new JTextField("",10);
@@ -32,11 +32,11 @@ public class InputBoxPanel extends JFrame implements KeyListener{
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 int val = new Integer(textfield.getText());
-                if (!cellBt.model.checkCellUpdate(val)) {
+                if (!cell.model.checkCellUpdate(val)) {
                     label.setText("INVALID VALUE");
                 } else {
                     dispose();
-                    cellBt.model.updateValue(val);
+                    cell.model.updateValue(val);
                     med.getFrame().getContentPane().revalidate();
                     med.getFrame().repaint();
                     }
@@ -57,11 +57,11 @@ public class InputBoxPanel extends JFrame implements KeyListener{
     public void keyPressed(KeyEvent keyEvent) {
         if (keyEvent.getKeyCode() == KeyEvent.VK_ENTER) {
             int val = new Integer(textfield.getText());
-            if (!cellBt.model.checkCellUpdate(val)) {
+            if (!cell.model.checkCellUpdate(val)) {
                 label.setText("INVALID VALUE");
             } else {
                 dispose();
-                cellBt.model.updateValue(val);
+                cell.model.updateValue(val);
                 med.getFrame().getContentPane().revalidate();
                 med.getFrame().repaint();
             }

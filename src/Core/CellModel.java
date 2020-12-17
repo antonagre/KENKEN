@@ -5,11 +5,13 @@ public class CellModel {
     public int x, y;
     public int n;
     public Block block;
+    private Cell c;
 
-    public CellModel(int x, int y, Block block) {
+    public CellModel(int x, int y, Block block,Cell c) {
         this.x = x;
         this.y = y;
         this.block = block;
+        this.c=c;
     }
 
     public void reset(){
